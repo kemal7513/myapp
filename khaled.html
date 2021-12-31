@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <label for="tn">
+            <input type="checkbox" name="pays" id="tn" value="tn">
+            Tunisie
+        </label>
+        <label for="dz">
+            <input type="checkbox" name="pays" id="dz" value="dz">
+            Algérie
+        </label>
+        <label for="mr">
+            <input type="checkbox" name="pays" id="mr" value="mr">
+            Maroc
+        </label>
+    </div>
+
+    <script>
+        const allCheckbox = document.querySelectorAll("input[name='pays']")
+
+        const responses = ["dz", "tn"]
+        const proposition = []
+
+        allCheckbox.forEach((element, index) => {
+            element.checked = false;
+
+            element.addEventListener('click', (e) => {
+
+
+                if (responses.includes(element.value) && element.checked) {
+                    element.parentNode.style.background = "green"
+                } else {
+                    element.parentNode.style.background = "red";
+
+                }
+
+                if (!element.checked) {
+
+                        if(proposition.length <= 2) {
+
+                            proposition?.pop(index)
+                        }
+                    element.parentNode.style.background = "white"
+                } else{
+                    if(proposition.length < 2) {
+                        proposition.push(index)
+                    }
+                }
+
+                console.log(proposition);
+            })
+        })
+
+    </script>
+</body>
+
+</html>
