@@ -27,6 +27,7 @@ window.onload = function () {
     launch();
   }
   function launch() {
+    launch();
     snakee = new Snake(
       [
         [6, 4],
